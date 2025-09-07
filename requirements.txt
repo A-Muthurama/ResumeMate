@@ -1,0 +1,9 @@
+Flask
+reportlab
+python-docx
+google-generativeai
+python-dotenv==1.0.0
+scikit-learn
+PyMuPDF
+gunicorn
+requests

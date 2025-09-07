@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Data Scientist",
+    "keywords": ["python", "pandas", "numpy", "scikit-learn", "machine learning", "statistics", "sql", "data visualization"]
+  },
+  {
+    "title": "Machine Learning Engineer",
+    "keywords": ["python", "pytorch", "tensorflow", "deep learning", "model training", "mlops", "docker", "git"]
+  },
+  {
+    "title": "Data Engineer",
+    "keywords": ["sql", "etl", "spark", "hadoop", "python", "airflow", "data pipeline", "aws"]
+  },
+  {
+    "title": "Backend Developer",
+    "keywords": ["python", "flask", "django", "rest api", "sql", "postgresql", "redis", "docker"]
+  },
+  {
+    "title": "Frontend Developer",
+    "keywords": ["javascript", "react", "html", "css", "bootstrap", "typescript", "ui", "frontend"]
+  },
+  {
+    "title": "DevOps Engineer",
+    "keywords": ["docker", "kubernetes", "terraform", "ci/cd", "aws", "monitoring", "linux", "scripting"]
+  }
+]

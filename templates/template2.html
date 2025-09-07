@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: Times New Roman, serif; margin: 40px; color:#000; }
+    h1 { text-align:center; font-size:28px; }
+    h2 { font-size:18px; border-bottom:1px solid black; }
+  </style>
+</head>
+<body>
+  <h1>{{ name }}</h1>
+  <p style="text-align:center;">Email: {{ email }} | Phone: {{ phone }} | LinkedIn: {{ linkedin }}</p>
+
+  <h2>Summary</h2>
+  <p>{{ summary }}</p>
+
+  <h2>Skills</h2>
+  <ul>{% for skill in skills %}<li>{{ skill }}</li>{% endfor %}</ul>
+
+  <h2>Education</h2>
+  <p>{{ education }}</p>
+
+  <h2>Projects</h2>
+  <p>{{ projects }}</p>
+
+  <h2>Achievements</h2>
+  <p>{{ achievements }}</p>
+
+  <h2>Certifications</h2>
+  <p>{{ certifications }}</p>
+</body>
+</html>

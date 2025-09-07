@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="fw-bold mb-3">Job Matching 🔎</h2>
+
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card p-4 mb-4">
+      <h5>Upload Resume</h5>
+      <form method="POST" enctype="multipart/form-data">
+        <div class="mb-3"><input class="form-control" type="file" name="resume_file" accept=".pdf,.doc,.docx"></div>
+        <button class="btn btn-outline-primary" type="submit">Upload & Match</button>
+      </form>
+      <small class="text-muted d-block mt-2">Or paste your resume text on the right and click Match.</small>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="card p-4">
+      <h5>Paste Resume Text</h5>
+      <form method="POST">
+        <div class="mb-3">
+          <textarea class="form-control" name="resume_text" rows="12" placeholder="Paste resume text here..."></textarea>
+        </div>
+        <button class="btn btn-warning" type="submit">Match Jobs</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% if matches %}
+  <hr>
+  <h4 class="mt-3">Top Matches</h4>
+  <div class="row g-3">
+    {% for m in matches %}
+    <div class="col-md-6">
+      <div class="card p-3">
+        <div class="d-flex justify-content-between">
+          <div><strong>{{ m.title }}</strong><div class="text-muted small">Keywords: {{ m.job_keywords|join(', ') }}</div></div>
+          <div><span class="badge bg-primary">{{ m.score }}%</span></div>
+        </div>
+        <div class="mt-2 small">
+          <div><strong>Matched:</strong> {{ m.matched|join(', ') or '—' }}</div>
+          <div><strong>Missing:</strong> {{ m.missing|join(', ') or '—' }}</div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% endif %}
+{% endblock %}

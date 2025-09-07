@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-5">
+  <h2 class="text-center mb-4">📊 ATS Resume Scoring</h2>
+
+  <!-- Upload Form -->
+  <div class="card shadow-sm p-4 mb-5">
+    <form method="POST" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label class="form-label">Upload Resume (PDF/DOCX)</label>
+        <input type="file" class="form-control" name="resume_file">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Or Paste Resume Text</label>
+        <textarea class="form-control" rows="5" name="resume_text" placeholder="Paste your resume here..."></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Job Description</label>
+        <textarea class="form-control" rows="5" name="job_desc" placeholder="Paste job description here..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-warning w-100">⚡ Get ATS Score</button>
+    </form>
+  </div>
+
+  {% if result %}
+  <!-- ATS Score Result -->
+  <div class="card shadow-sm p-4">
+    <h4 class="mb-3 text-center">✨ Your ATS Results</h4>
+
+    <!-- Score Progress Bar -->
+    <div class="mb-4">
+      <label><strong>ATS Score:</strong></label>
+      <div class="progress" style="height: 30px;">
+        <div class="progress-bar bg-warning text-dark fw-bold" 
+             role="progressbar" 
+             style="width: {{ result.ats_score }}%;" 
+             aria-valuenow="{{ result.ats_score }}" 
+             aria-valuemin="0" 
+             aria-valuemax="100">
+          {{ result.ats_score }}%
+        </div>
+      </div>
+    </div>
+
+    <!-- Matched Skills -->
+    <div class="mb-3">
+      <h5>✅ Matched Skills</h5>
+      {% if result.matched_skills %}
+        {% for skill in result.matched_skills %}
+          <span class="badge bg-success m-1">{{ skill }}</span>
+        {% endfor %}
+      {% else %}
+        <p class="text-muted">No matched skills found.</p>
+      {% endif %}
+    </div>
+
+    <!-- Missing Skills -->
+    <div class="mb-3">
+      <h5>❌ Missing Skills</h5>
+      {% if result.missing_skills %}
+        {% for skill in result.missing_skills %}
+          <span class="badge bg-danger m-1">{{ skill }}</span>
+        {% endfor %}
+      {% else %}
+        <p class="text-muted">No missing skills found.</p>
+      {% endif %}
+    </div>
+
+    <!-- Suggestions -->
+    <div class="mt-4">
+      <h5>💡 Suggestions</h5>
+      <div class="alert alert-info">
+        {{ result.suggestions }}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
